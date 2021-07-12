@@ -98,12 +98,12 @@ async def start(client, message):
         return
     await message.reply(help_text)
 
-@RenameBot.on_message(filters.private & filters.command("broadcast") & filters.user(Config.BOT_OWNER) & filters.reply)
+@RenameBot.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, client: message):
     await broadcast_handler(event)
 
 
-@RenameBot.on_message(filters.private & filters.command("status") & filters.user(Config.BOT_OWNER))
+@RenameBot.on_message(filters.private & filters.command("status") & filters.user(config.BOT_OWNER))
 async def show_status_count(_, client: message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
@@ -114,7 +114,7 @@ async def show_status_count(_, client: message):
     disk_usage = psutil.disk_usage('/').percent
     total_users = await db.total_users_count()
     await event.reply_text(
-        text=f"**Total Disk Space:** {total} \n**Used Space:** {used}({disk_usage}%) \n**Free Space:** {free} \n**CPU Usage:** {cpu_usage}% \n**RAM Usage:** {ram_usage}%\n\n**Total Users in DB:** `{total_users}`\n\n@leofilerenamerbot 🇱🇰",
+        text=f"**Total Disk Space:** {total} \n**Used Space:** {used}({disk_usage}%) \n**Free Space:** {free} \n**CPU Usage:** {cpu_usage}% \n**RAM Usage:** {ram_usage}%\n\n**Total Users in DB:** `{total_users}`\n\n@leosongdownloaderbot 🇱🇰",
         parse_mode="Markdown",
         quote=True
     )

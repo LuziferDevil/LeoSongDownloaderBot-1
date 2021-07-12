@@ -23,6 +23,10 @@
         "API_ID": {
             "description": "Your APP ID from my.telegram.org",
             "value": ""
+        },
+        "UPDATES_CHANNEL": {
+            "description": "Channel id for force sub",
+            "value": ""
         }
     },
     "addons": [],

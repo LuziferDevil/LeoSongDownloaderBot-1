@@ -9,9 +9,3 @@ wget
 aiofiles
 OpenCC
 pytube
-pillow
-hachoir
-dnspython
-motor
-pyromod
-psutil

@@ -98,12 +98,12 @@ async def start(client, message):
         return
     await message.reply(help_text)
 
-@RenameBot.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
+@app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, client: message):
     await broadcast_handler(event)
 
 
-@RenameBot.on_message(filters.private & filters.command("status") & filters.user(config.BOT_OWNER))
+@app.on_message(filters.private & filters.command("status") & filters.user(config.BOT_OWNER))
 async def show_status_count(_, client: message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)

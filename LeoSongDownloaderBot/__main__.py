@@ -99,7 +99,7 @@ async def start(client, message):
     await message.reply(help_text)
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
-async def _broadcast(client, message):
+async def _broadcast(_, client: Message):
     await broadcast_handler(client)
 
 

@@ -1,6 +1,10 @@
 # Leo Projects <https://t.me/leosupportx>
 # @Naviya2 🇱🇰
 
+import asyncio
+import config
+from helper.forcesub import ForceSub
+from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from LeoSongDownloaderBot.plugins import *
 from pyrogram import idle, filters
@@ -36,6 +40,9 @@ Updates Channel : @new_ehi 🇱🇰
 
 @app.on_message(filters.command("start"))
 async def start(client, message):
+    FSub = await ForceSub(client, message)
+    if FSub == 400:
+        return
     chat_id = message.chat.id
     user_id = message.from_user["id"]
     name = message.from_user["first_name"]
@@ -73,6 +80,9 @@ async def start(client, message):
 
 @app.on_message(filters.command("help"))
 async def start(client, message):
+    FSub = await ForceSub(client, message)
+    if FSub == 400:
+        return
     await message.reply(help_text)
 
 app.start()

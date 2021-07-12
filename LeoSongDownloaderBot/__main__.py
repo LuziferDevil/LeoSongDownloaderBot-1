@@ -99,12 +99,12 @@ async def start(client, message):
     await message.reply(help_text)
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
-async def _broadcast(_, client: message):
+async def _broadcast(client, message):
     await broadcast_handler(event)
 
 
 @app.on_message(filters.private & filters.command("status") & filters.user(config.BOT_OWNER))
-async def show_status_count(_, client: message):
+async def show_status_count(client, message):
     total, used, free = shutil.disk_usage(".")
     total = humanbytes(total)
     used = humanbytes(used)

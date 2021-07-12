@@ -100,7 +100,7 @@ async def start(client, message):
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(client, message):
-    await broadcast_handler(event)
+    await broadcast_handler(m: Message)
 
 
 @app.on_message(filters.private & filters.command("status") & filters.user(config.BOT_OWNER))

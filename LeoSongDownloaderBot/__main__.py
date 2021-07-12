@@ -3,12 +3,13 @@
 
 import asyncio
 import config
+from pyrogram import Client
 from helper.forcesub import ForceSub
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types.bots_and_keyboards import reply_keyboard_markup
 from LeoSongDownloaderBot.plugins import *
 from pyrogram import idle, filters
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 from LeoSongDownloaderBot import LOGGER
 

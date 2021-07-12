@@ -27,6 +27,21 @@
         "UPDATES_CHANNEL": {
             "description": "Channel id for force sub",
             "value": ""
+        },
+        "BOT_OWNER": {
+            "description": "Bot Owner UserID"
+        },
+        "MONGODB_URI": {
+            "description": "MongoDB Database URI for Saving UserID for Broadcast"
+        },
+        "LOG_CHANNEL": {
+            "description": "Logs Channel ID for some Tracking XD. Example: -100123456789"
+        },
+        "BROADCAST_AS_COPY": {
+            "description": "Broadcast as Copy or with Forward Tag. Value should be True/False."
+        },
+        "SESSION_NAME": {
+            "description": "Any Bot Session Name."
         }
     },
     "addons": [],

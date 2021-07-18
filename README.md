@@ -7,9 +7,7 @@ Reach me on Telegram [Leo Song Downloader Bot 🎵](https://t.me/leosongdownload
 
 ## Features
 
-- YouTube Download
-- Deezer Download
-- JioSaavn Download
+Download any song from yt 😍
 
 ## How To Host
 

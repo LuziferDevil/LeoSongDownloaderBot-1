@@ -58,7 +58,7 @@ def song(client, message):
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "Downloaded By : @leosongdownloaderbot 🇱🇰\n\nRequested By :{} 😊".format(message.from_user.mention)
+        rep = "Downloaded By : @leosongdownloaderbot 🇱🇰\n\nRequested By : {} 😊".format(message.from_user.mention)
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -67,7 +67,7 @@ def song(client, message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            parse_mode="md",
+            parse_mode="HTML",
             title=title,
             duration=dur,
         )
@@ -250,7 +250,7 @@ def time_to_seconds(time):
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("{},\n\nUse this format to download songs from saavn 👇\n\n<code>/saavn {song name}</code>".format(message.from_user.mention))
+        await message.reply_text("{},\n\nUse this format to download songs from saavn 👇\n\n<code>/saavn song_name</code>".format(message.from_user.mention))
         return
     if is_downloading:
         await message.reply_text(
@@ -286,7 +286,7 @@ async def jssong(_, message):
 async def deezsong(_, message):
     global is_downloading
     if len(message.command) < 2:
-        await message.reply_text("{},\n\nUse this format to download songs from deezer 👇\n\n<code>/deezer {song name}</code>".format(message.from_user.mention))
+        await message.reply_text("{},\n\nUse this format to download songs from deezer 👇\n\n<code>/deezer song_name</code>".format(message.from_user.mention))
         return
     if is_downloading:
         await message.reply_text(

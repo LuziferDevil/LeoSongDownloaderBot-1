@@ -4,7 +4,7 @@ import os
 API_ID = int(os.getenv("API_ID", 2158704))
 API_HASH = os.getenv("API_HASH", "227f3bd8c1d7fc3ecfa243e1a85dd2fa")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "1745816793:AAHNHaAVJW_YIyOy5x1K2FTyt9xbZ6DSZaY")
-UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", -1001231683570)
+UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", -100)
 BOT_USERNAME = os.environ.get("BOT_USERNAME", "testleonvibot")
 SESSION_NAME = os.environ.get("SESSION_NAME", "LeoSongDownloaderBot")
 BOT_OWNER = int(os.environ.get("BOT_OWNER", 1069002447))

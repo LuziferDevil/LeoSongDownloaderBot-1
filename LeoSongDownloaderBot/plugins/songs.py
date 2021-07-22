@@ -10,6 +10,8 @@ import os
 import time
 from random import randint
 from urllib.parse import urlparse
+from Python_ARQ import ARQ
+from config import ARQ_API_KEY
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 import aiofiles
 import aiohttp
@@ -20,6 +22,8 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
+
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 @app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):

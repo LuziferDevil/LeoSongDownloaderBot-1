@@ -5,7 +5,6 @@ import os
 import requests
 import aiohttp
 import youtube_dl
-from pytube import YouTube
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
@@ -44,11 +43,11 @@ def song(client, message):
         yt = YouTube(link)
     except Exception as e:
         m.edit(
-            "❌ Nothing Found.\n\nTry another keyword or maybe spell it properly 😊"
+            "❌ Nothing Found ☹️\n\nTry another keyword or maybe spell it properly 😊"
         )
         print(str(e))
         return
-    m.edit("Now I am Downloading Your Song 😊\n\nleosongdownloaderbot 🇱🇰")
+    m.edit("Now I am Downloading Your Song 😊\n\n@leosongdownloaderbot 🇱🇰")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -62,7 +61,7 @@ def song(client, message):
         s = message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur, performer=str(yt.author))
         m.delete()
     except Exception as e:
-        m.edit('❌ An error occured 🙁 please ask in our [Support Group](https://t.me/leosupportx)')
+        m.edit('❌ An error occured 🙁 please ask in our [Support Group](https://t.me/leosupportx)')(disable_web_page_preview=True)
         print(e)
 
     try:

@@ -37,16 +37,23 @@ Leo Projects 🇱🇰
 """
 
 help_text = """
-You should know the following commands to use this bot 🙂
+Hello {}👋
 
-⭕️ /song <song name>: Download songs from all sources 😏
+You should know following instructions to download songs 😊
 
-⭕️ Send youtube url to me directly i can download it to your telegram database in audio format 🙂
+You can download song by,
+
+🔰<code>/song <song name></code>: Download songs from all sources
+Ex : <code>/song alone</code>
+
+Or,
+
+🔰 via youtube URL s... Send me any Youtube URL to download it 😊
 
 
-Made By : @naviya2 🇱🇰
-Support Group : @leosuppportx 🇱🇰
-Updates Channel : @new_ehi 🇱🇰
+Made By : [Naviya 🇱🇰](https://t.me/naviya2)
+Support Group : [Leo Support 🇱🇰](https://t.me/leosupportx)
+Updates Channel : [Leo Updates 🇱🇰](https://t.me/new_ehi)
 """
 
 @app.on_message(filters.command("start"))
@@ -96,7 +103,9 @@ async def start(client, message):
     FSub = await ForceSub(client, message)
     if FSub == 400:
         return
-    await message.reply(help_text)
+    await message.replytext(
+        text= help_text.format(update.from_user.mention),
+        disable_web_page_preview=True)
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, client: Message):

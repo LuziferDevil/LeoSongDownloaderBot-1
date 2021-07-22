@@ -17,3 +17,7 @@ pyromod
 psutil
 ffmpeg-python
 ffmpeg
+python-arq
+future
+py-tgcalls
+python-dotenv

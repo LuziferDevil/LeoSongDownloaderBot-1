@@ -10,7 +10,9 @@ import os
 import time
 from random import randint
 from urllib.parse import urlparse
-
+from Python_ARQ import ARQ
+from config import ARQ_API_KEY
+from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 import aiofiles
 import aiohttp
 import requests
@@ -20,13 +22,12 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
-from youtubesearchpython import SearchVideos
 
-from DaisyXMusic.config import DURATION_LIMIT
-from DaisyXMusic.modules.play import arq
+aiohttpsession = aiohttp.ClientSession()
 
+arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
-@Client.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id
@@ -37,7 +38,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    m = message.reply("🔎 Finding the song...")
+    m = message.reply("Now I am Searching Your Song 🔎\n\n@leosongdownloaderbot 🇱🇰")
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -54,16 +55,16 @@ def song(client, message):
         results[0]["views"]
 
     except Exception as e:
-        m.edit("❌ Found Nothing.\n\nTry another keywork or maybe spell it properly.")
+        m.edit("Nothing Found {} ☹️\n\nPlease check your spellings and try again😊".format(message.from_user.mention))
         print(str(e))
         return
-    m.edit("Downloading the song ")
+    m.edit("Now I am Downloading Your Song ⏳\n\nPlease Wait 😊")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = "**🎵 Uploaded by **"
+        rep = "Downloaded By : @leosongdownloaderbot 🇱🇰\n\nRequested By : {} 😊".format(message.from_user.mention)
         secmul, dur, dur_arr = 1, 0, duration.split(":")
         for i in range(len(dur_arr) - 1, -1, -1):
             dur += int(dur_arr[i]) * secmul
@@ -72,13 +73,13 @@ def song(client, message):
             audio_file,
             caption=rep,
             thumb=thumb_name,
-            parse_mode="md",
+            parse_mode="HTML",
             title=title,
             duration=dur,
         )
         m.delete()
     except Exception as e:
-        m.edit("❌ Error")
+        m.edit("An error occured {} ☹️ Please feel free to say in our support group 😊 \n\nSupport Group : @leosupportx  🇱🇰".format(message.from_user.mention))
         print(e)
 
     try:
@@ -249,3 +250,76 @@ is_downloading = False
 def time_to_seconds(time):
     stringt = str(time)
     return sum(int(x) * 60 ** i for i, x in enumerate(reversed(stringt.split(":"))))
+
+
+@app.on_message(filters.command("saavn") & ~filters.edited)
+async def jssong(_, message):
+    global is_downloading
+    if len(message.command) < 2:
+        await message.reply_text("{},\n\nUse this format to download songs from saavn 👇\n\n<code>/saavn song_name</code>".format(message.from_user.mention))
+        return
+    if is_downloading:
+        await message.reply_text(
+            "{},\n\nAnother download is in progress now ⏳\n\nPlease try again after 1 or 2 minutes 😊".format(message.from_user.mention)
+        )
+        return
+    is_downloading = True
+    text = message.text.split(None, 1)[1]
+    query = text.replace(" ", "%20")
+    m = await message.reply_text("Now I am Searching Your Song 🔎\n\n@leosongdownloaderbot 🇱🇰")
+    try:
+        songs = await arq.saavn(query)
+        if not songs.ok:
+            await message.reply_text(songs.result)
+            return
+        sname = songs.result[0].song
+        slink = songs.result[0].media_url
+        ssingers = songs.result[0].singers
+        await m.edit("Now I am Downloading Your Song ⏳\n\nPlease Wait 😊")
+        song = await download_song(slink)
+        await m.edit("Now I am Uploading Your Song ⏳\n\nPlease Wait 😊")
+        await message.reply_audio(audio=song, title=sname, performer=ssingers)
+        os.remove(song)
+        await m.delete()
+    except Exception as e:
+        is_downloading = False
+        await m.edit(str(e))
+        return
+    is_downloading = False
+
+
+@app.on_message(filters.command("deezer") & ~filters.edited)
+async def deezsong(_, message):
+    global is_downloading
+    if len(message.command) < 2:
+        await message.reply_text("{},\n\nUse this format to download songs from deezer 👇\n\n<code>/deezer song_name</code>".format(message.from_user.mention))
+        return
+    if is_downloading:
+        await message.reply_text(
+            "{},\n\nAnother download is in progress now ⏳\n\nPlease try again after 1 or 2 minutes 😊".format(message.from_user.mention)
+        )
+        return
+    is_downloading = True
+    text = message.text.split(None, 1)[1]
+    query = text.replace(" ", "%20")
+    m = await message.reply_text("Now I am Searching Your Song 🔎\n\n@leosongdownloaderbot 🇱🇰")
+    try:
+        songs = await arq.deezer(query, 1)
+        if not songs.ok:
+            await message.reply_text(songs.result)
+            return
+        title = songs.result[0].title
+        url = songs.result[0].url
+        artist = songs.result[0].artist
+        await m.edit("Now I am Downloading Your Song ⏳\n\nPlease Wait 😊")
+        song = await download_song(url)
+        await m.edit("Now I am Uploading Your Song ⏳\n\nPlease Wait 😊")
+        await message.reply_audio(audio=song, title=title, performer=artist)
+        os.remove(song)
+        await m.delete()
+    except Exception as e:
+        is_downloading = False
+        await m.edit(str(e))
+        return
+    is_downloading = False
+

@@ -5,6 +5,7 @@ import os
 import requests
 import aiohttp
 import youtube_dl
+from pytube import YouTube
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 from pyrogram import filters, Client
 from youtube_search import YoutubeSearch
@@ -46,6 +47,7 @@ def song(client, message):
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
         channel = results[0]["channel"]
+        yt = YouTube(link)
     except Exception as e:
         shed.edit(
             "Nothing Found {}☹️\n\nPlease spell it properly😊".format(message.from_user.mention)

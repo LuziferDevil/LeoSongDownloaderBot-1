@@ -41,18 +41,18 @@ Hello {}👋
 
 You should know the following commands to use this bot 😊
 
-⭕️ /song <song name>: Download songs from all sources 😏
-⭕️ /saavn <song name>: Download songs from saavn 😏
-⭕️ /deezer <song name>: Download songs from deezer 😏
+⭕️ /song <song name>: Download songs from YT
+⭕️ /saavn <song name>: Download songs from saavn
+⭕️ /deezer <song name>: Download songs from deezer
 
 Or,
 
-You can download songs via youtube URL s 😊 Send me any Youtube URL to download it 😊
+You can download songs via youtube URL s... Send me any Youtube URL to download it 😊
 
 
-Made By : @naviya2 🇱🇰
-Support Group : @leosuppportx 🇱🇰
-Updates Channel : @new_ehi 🇱🇰
+Made By : [Naviya 🇱🇰](https://t.me/naviya2)
+Support Group : [Leo Support 🇱🇰](https://t.me/leosupportx)
+Updates Channel : [Leo Updates 🇱🇰](https://t.me/new_ehi]
 """
 
 @app.on_message(filters.command("start"))

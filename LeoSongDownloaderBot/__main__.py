@@ -39,15 +39,16 @@ Leo Projects 🇱🇰
 help_text = """
 Hello {}👋
 
-You should know the following commands to use this bot 😊
+You should know following instructions to download songs 😊
 
-⭕️ /song <song name>: Download songs from YT
-⭕️ /saavn <song name>: Download songs from saavn
-⭕️ /deezer <song name>: Download songs from deezer
+You can download song by,
+
+🔰<code>/song <song name></code>: Download songs from all sources
+Ex : <code>/song alone</code>
 
 Or,
 
-You can download songs via youtube URL s... Send me any Youtube URL to download it 😊
+🔰 via youtube URL s... Send me any Youtube URL to download it 😊
 
 
 Made By : [Naviya 🇱🇰](https://t.me/naviya2)

@@ -26,7 +26,12 @@ def song(client, message):
         query += ' ' + str(i)
     print(query)
     m = message.reply('🔎 I am Searching Your Song Please Wait ...\n@leosongdownloaderbot 🇱🇰')
-    ydl_opts = {"format": "bestaudio[ext=m4a]"}
+    ydl_opts =  {
+       "format": "bestaudio[ext=m4a]",
+       "geo-bypass": True,
+       "nocheckcertificate": True,
+       "outtmpl": "downloads/%(id)s.%(ext)s",
+       }
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
         link = f"https://youtube.com{results[0]['url_suffix']}"

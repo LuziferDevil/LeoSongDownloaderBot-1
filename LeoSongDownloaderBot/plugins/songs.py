@@ -45,6 +45,7 @@ def song(client, message):
         duration = results[0]["duration"]
         url_suffix = results[0]["url_suffix"]
         views = results[0]["views"]
+        channel = results[0]["channel"]
     except Exception as e:
         m.edit(
             "❌ Nothing Found ☹️\n\nTry another keyword or maybe spell it properly 😊"

@@ -104,7 +104,7 @@ async def start(client, message):
     if FSub == 400:
         return
     await message.reply(
-        text= help_text.format(update.from_user.mention),
+        text= help_text.format(message.from_user.mention),
         disable_web_page_preview=True)
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)

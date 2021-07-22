@@ -1,7 +1,7 @@
 # Leo Projects <https://t.me/leosupportx>
 
 import os
-API_ID = int(os.getenv("API_ID", 6))
+API_ID = int(os.getenv("API_ID", 1481861))
 API_HASH = os.getenv("API_HASH", "8c99a2b1329cc263f71da0439cad959f")
 BOT_TOKEN = os.getenv("BOT_TOKEN", "1745816793:AAHNHaAVJW_YIyOy5x1K2FTyt9xbZ6DSZaY")
 UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", -1001231683570)

@@ -37,11 +37,17 @@ Leo Projects 🇱🇰
 """
 
 help_text = """
-You should know the following commands to use this bot 🙂
+Hello {}👋
+
+You should know the following commands to use this bot 😊
 
 ⭕️ /song <song name>: Download songs from all sources 😏
+⭕️ /saavn <song name>: Download songs from saavn 😏
+⭕️ /deezer <song name>: Download songs from deezer 😏
 
-⭕️ Send youtube url to me directly i can download it to your telegram database in audio format 🙂
+Or,
+
+You can download songs via youtube URL s 😊 Send me any Youtube URL to download it 😊
 
 
 Made By : @naviya2 🇱🇰
@@ -96,7 +102,7 @@ async def start(client, message):
     FSub = await ForceSub(client, message)
     if FSub == 400:
         return
-    await message.reply(help_text)
+    await message.reply(help_text.format(message.from_user.mention))
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, client: Message):

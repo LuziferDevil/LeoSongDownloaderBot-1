@@ -23,6 +23,8 @@ from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
 
+aiohttpsession = aiohttp.ClientSession()
+
 arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
 @app.on_message(filters.command("song") & ~filters.channel)

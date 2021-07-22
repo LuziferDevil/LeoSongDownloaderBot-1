@@ -103,7 +103,7 @@ async def start(client, message):
     FSub = await ForceSub(client, message)
     if FSub == 400:
         return
-    await message.replytext(
+    await message.reply(
         text= help_text.format(update.from_user.mention),
         disable_web_page_preview=True)
 

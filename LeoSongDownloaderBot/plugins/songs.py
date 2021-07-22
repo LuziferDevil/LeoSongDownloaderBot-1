@@ -48,7 +48,7 @@ def song(client, message):
         channel = results[0]["channel"]
     except Exception as e:
         shed.edit(
-            "❌ Nothing Found {}☹️\n\nPlease spell it properly😊".format(user_id(message.from_user.mention)
+            "❌ Nothing Found {}☹️\n\nPlease spell it properly😊".format(message.from_user.mention)
         )
         print(str(e))
         return

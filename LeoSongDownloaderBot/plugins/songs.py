@@ -25,7 +25,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('🔎 I am Searching Your Song Please Wait ...\n@leosongdownloaderbot 🇱🇰')
+    shed = message.reply('🔎 I am Searching Your Song Please Wait ...\n@leosongdownloaderbot 🇱🇰')
     ydl_opts =  {
        "format": "bestaudio[ext=m4a]",
        "geo-bypass": True,
@@ -47,12 +47,12 @@ def song(client, message):
         views = results[0]["views"]
         channel = results[0]["channel"]
     except Exception as e:
-        m.edit(
-            "❌ Nothing Found ☹️\n\nTry another keyword or maybe spell it properly 😊"
+        shed.edit(
+            "❌ Nothing Found {}☹️\n\nPlease spell it properly😊".format(user_id(message.from_user.mention)
         )
         print(str(e))
         return
-    m.edit("Now I am Downloading Your Song 😊\n\n@leosongdownloaderbot 🇱🇰")
+    shed.edit("Now I am Downloading Your Song 😊\n\n@leosongdownloaderbot 🇱🇰")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
@@ -64,9 +64,9 @@ def song(client, message):
             dur += (int(dur_arr[i]) * secmul)
             secmul *= 60
         s = message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur, performer=str(yt.author))
-        m.delete()
+        shed.delete()
     except Exception as e:
-        m.edit('❌ An error occured 🙁 please ask in our [Support Group](https://t.me/leosupportx)')(disable_web_page_preview=True)
+        shed.edit('An error occured {} ☹️ please ask in our [Support Group](https://t.me/leosupportx)'.format(message.from_user.mention))
         print(e)
 
     try:

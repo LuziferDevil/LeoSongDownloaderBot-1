@@ -52,7 +52,7 @@ You can download songs via youtube URL s... Send me any Youtube URL to download 
 
 Made By : [Naviya 🇱🇰](https://t.me/naviya2)
 Support Group : [Leo Support 🇱🇰](https://t.me/leosupportx)
-Updates Channel : [Leo Updates 🇱🇰](https://t.me/new_ehi]
+Updates Channel : [Leo Updates 🇱🇰](https://t.me/new_ehi)
 """
 
 @app.on_message(filters.command("start"))
@@ -102,7 +102,9 @@ async def start(client, message):
     FSub = await ForceSub(client, message)
     if FSub == 400:
         return
-    await message.reply(help_text.format(message.from_user.mention))
+    await message.replytext(
+        text= help_text.format(update.from_user.mention),
+        disable_web_page_preview=True)
 
 @app.on_message(filters.private & filters.command("broadcast") & filters.user(config.BOT_OWNER) & filters.reply)
 async def _broadcast(_, client: Message):

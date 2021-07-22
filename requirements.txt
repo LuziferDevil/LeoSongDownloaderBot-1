@@ -15,3 +15,5 @@ dnspython
 motor
 pyromod
 psutil
+ffmpeg-python
+ffmpeg

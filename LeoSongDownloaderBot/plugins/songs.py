@@ -10,7 +10,7 @@ import os
 import time
 from random import randint
 from urllib.parse import urlparse
-
+from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 import aiofiles
 import aiohttp
 import requests
@@ -20,13 +20,8 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
-from youtubesearchpython import SearchVideos
 
-from DaisyXMusic.config import DURATION_LIMIT
-from DaisyXMusic.modules.play import arq
-
-
-@Client.on_message(filters.command("song") & ~filters.channel)
+@app.on_message(filters.command("song") & ~filters.channel)
 def song(client, message):
 
     user_id = message.from_user.id

@@ -27,7 +27,7 @@ async def ForceSub(bot: Client, event: Message):
         print(f"Unable to do Force Subscribe to {config.UPDATES_CHANNEL}\n\nError: {err}\n\nContact Support Group: https://t.me/leosupportx")
         return 200
     try:
-        user = await bot.get_chat_member(chat_id=(int(config.UPDATES_CHANNEL)))
+        user = await bot.get_chat_member(chat_id=(int(config.UPDATES_CHANNEL)), user_id=event.from_user.id)
         if user.status == "kicked":
             await bot.send_message(
                 chat_id=event.from_user.id,

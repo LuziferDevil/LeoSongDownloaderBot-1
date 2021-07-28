@@ -50,7 +50,7 @@ async def ForceSub(bot: Client, event: Message):
                     ]
                 ]
             ),
-            parse_mode="markdown",
+            parse_mode="HTML",
             reply_to_message_id=event.message_id
         )
         return 400

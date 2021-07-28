@@ -6,8 +6,8 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 @app.on_callback_query()
-async def button(client, message):
-   elif message.data = "home":
+async def cb_data(client, message):
+    if message.data = "home":
         await message.message.edit_text(
             text=Translation.START_TEXT.format(message.from_user.mention),
             reply_markup=Translation.START_BUTTONS,

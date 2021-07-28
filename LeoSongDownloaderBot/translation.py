@@ -37,6 +37,16 @@ Or,
 🔰 **Library :** [Pyrogram v1.2.0](https://pyrogram.org)
 🔰 **Server :** [VPS](https://www.digitalocean.com)
 """
+
+    ABOUT_DEV_TEXT = """
+<b>Developer is a Super Noob 😅
+
+You can find him in telegram as @naviya2 🇱🇰
+
+Developer's github account : [Github](https://github.com/Naviya2) 🇱🇰
+
+If you find any error on this bot please be kind to tell [Developer](https://t.me/naviya2) or in our [Support Group](https://t.me/leosupportx) 😊</b>
+"""
     INFO_TEXT = """
 Hey {mention},
 
@@ -74,7 +84,7 @@ Your details are here 😊
         [[
         InlineKeyboardButton('Home 🏠', callback_data='home'),
         InlineKeyboardButton('Help 🆘', callback_data='help'),
-        InlineKeyboardButton('User Info ❗', callback_data='info')
+        InlineKeyboardButton('About Dev 🧑‍💻', callback_data='aboutdev')
         ],[
         InlineKeyboardButton('Close ❎', callback_data='close')
         ]]
@@ -88,3 +98,12 @@ Your details are here 😊
         InlineKeyboardButton('Close ❎', callback_data='close')
         ]]
     )
+    ABOUT_DEV_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('Home 🏠', callback_data='home'),
+        InlineKeyboardButton('Help 🆘', callback_data='help'),
+        InlineKeyboardButton('About ❗️', callback_data='about')
+        ],[
+        InlineKeyboardButton('Close ❎', callback_data='close')
+        ]]
+    ) 

@@ -31,9 +31,9 @@ I'm Leo Song Downloader Bot 🇱🇰
 You can download any song within a shortime with this Bot 🙂
 
 If you want to know how to use this bot just
-touch on this command " /help " 🙂
+touch on " Help 🆘 "  Button 😊
 
-Leo Projects 🇱🇰
+Leo Projects 🇱🇰 
 """
 
 help_text = """
@@ -76,7 +76,7 @@ async def start(client, message):
                         text="Support Group👥", url="https://t.me/leosupportx"
                     ),
                 ],
-                    
+                 
                 [
                     InlineKeyboardButton(
                         text="Developer🧑‍💻", url="https://t.me/naviya2"
@@ -84,6 +84,12 @@ async def start(client, message):
                     InlineKeyboardButton(
                         text="Rate us ★", url="https://t.me/tlgrmcbot?start=leosongdownloaderbot-review"
                     ),     
+                ],
+                
+                [ 
+                    InlineKeyboardButton(
+                        text="Help 🆘", callback_data="help"
+                    ),
                 ],
                 
                 [

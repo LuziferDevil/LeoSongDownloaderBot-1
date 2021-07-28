@@ -26,6 +26,12 @@ async def cb_data(client, message):
             reply_markup=Translation.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
+    elif message.data == "aboutdev":
+        await message.message.edit_text(
+            text=Translation.ABOUT_DEV_TEXT,
+            reply_markup=Translation.ABOUT_DEV_BUTTONS,
+            disable_web_page_preview=True
+        )
     elif message.data == "info":
         await message.message.edit_text(
             text=Translation.INFO_TEXT.format(username=message.from_user.username, first_name=message.from_user.first_name, last_name=message.from_user.last_name, user_id=message.from_user.id, mention=message.from_user.mention),

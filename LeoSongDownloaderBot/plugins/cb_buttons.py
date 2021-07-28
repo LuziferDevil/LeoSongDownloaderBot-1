@@ -7,10 +7,7 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 @app.on_callback_query()
 async def button(client, message):
-    if "|" in update.data:
-        await youtube_dl_call_back(bot, update)
-    elif "=" in update.data:
-        await ddl_call_back(bot, update)
+    
     elif message.data == "home":
         await message.message.edit_text(
             text=Translation.START_TEXT.format(message.from_user.mention),

@@ -1,17 +1,18 @@
 import os
 from LeoSongDownloaderBot.translation import Translation
 import config
-from LeoSongDownloaderBot.__main__ import LEOSONGDLIMG
 from pyrogram import Client
 from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 
+HOMEIMG = "https://telegra.ph/file/7a3ee0b1803ed6e6fbc87.jpg"
+
 @app.on_callback_query()
 async def cb_data(client, message):
     if message.data == "home":
         await message.message.edit_photo(
-            LEOSONGDLIMG,
+            HOMEIMG,
             caption=Translation.START_TEXT.format(message.from_user.mention),
             reply_markup=Translation.START_BUTTONS,
         )

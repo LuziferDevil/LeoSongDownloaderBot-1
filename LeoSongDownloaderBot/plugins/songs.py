@@ -22,6 +22,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
+from helpers.merrors import capture_err
 
 aiohttpsession = aiohttp.ClientSession()
 

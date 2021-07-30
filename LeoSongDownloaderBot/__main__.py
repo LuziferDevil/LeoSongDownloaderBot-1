@@ -35,7 +35,6 @@ async def start(client, message):
     await message.reply_photo(
         LEOSONGDLIMG,
         caption=Translation.START_TEXT.format(message.from_user.mention),
-        disable_web_page_preview=True,
         reply_markup=Translation.START_BUTTONS
     )
     

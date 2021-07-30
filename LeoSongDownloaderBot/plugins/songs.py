@@ -11,7 +11,7 @@ import time
 from random import randint
 from urllib.parse import urlparse
 from Python_ARQ import ARQ
-from config import ARQ_API_KEY
+from config import ARQ_API_KEY, BOT_USERNAME
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 import aiofiles
 import aiohttp

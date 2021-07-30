@@ -24,14 +24,17 @@ from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 from LeoSongDownloaderBot import LOGGER
 
+LEOSONGDLIMG = "https://telegra.ph/file/7a3ee0b1803ed6e6fbc87.jpg"
+
 @app.on_message(filters.command("start"))
 async def start(client, message):
     await AddUserToDatabase(client, message)
     FSub = await ForceSub(client, message)
     if FSub == 400:
         return
-    await message.reply_text(
-        text=Translation.START_TEXT.format(message.from_user.mention),
+    await message.reply_photo(
+        LEOSONGDLIMG,
+        caption=Translation.START_TEXT.format(message.from_user.mention),
         disable_web_page_preview=True,
         reply_markup=Translation.START_BUTTONS
     )

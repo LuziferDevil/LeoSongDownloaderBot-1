@@ -11,7 +11,7 @@ import time
 from random import randint
 from urllib.parse import urlparse
 from Python_ARQ import ARQ
-from config import ARQ_API_KEY, BOT_USERNAME
+from config import ARQ_API_KEY, UPDATES_CHANNEL
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 import aiofiles
 import aiohttp
@@ -22,6 +22,8 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
+
+is_downloading = False
 
 aiohttpsession = aiohttp.ClientSession()
 

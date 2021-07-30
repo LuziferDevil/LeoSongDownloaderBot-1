@@ -22,7 +22,7 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
-from helpers.errors import capture_err
+from helper.errors import capture_err
 
 is_downloading = False
 

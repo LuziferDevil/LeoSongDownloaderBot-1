@@ -22,13 +22,12 @@ from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message
 from youtube_search import YoutubeSearch
-from helpers.merrors import capture_err
 
 aiohttpsession = aiohttp.ClientSession()
 
 arq = ARQ("https://thearq.tech", ARQ_API_KEY, aiohttpsession)
 
-@app.on_message(filters.command(['yts', f'yts@{BOT_USERNAME}']))
+@app.on_message(filters.command('song'))
 def song(client, message):
 
     user_id = message.from_user.id 
@@ -99,9 +98,7 @@ async def download_song(url):
 
 # Jiosaavn Music
 
-
-@app.on_message(filters.command(["saavn", f"saavn@{BOT_USERNAME}"]) & ~filters.edited)
-@capture_err
+@app.on_message(filters.command("saavn") & ~filters.edited)
 async def jssong(_, message):
     global is_downloading
     if len(message.command) < 2:

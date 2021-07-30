@@ -6,15 +6,13 @@ from pyrogram.errors import UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from LeoSongDownloaderBot import LeoSongDownloaderBot as app
 
-HOMEIMG = "https://telegra.ph/file/7a3ee0b1803ed6e6fbc87.jpg"
-
 @app.on_callback_query()
 async def cb_data(client, message):
     if message.data == "home":
-        await message.message.edit_photo(
-            HOMEIMG,
-            caption=Translation.START_TEXT.format(message.from_user.mention),
+        await message.message.edit_text(
+            text=Translation.START_TEXT.format(message.from_user.mention),
             reply_markup=Translation.START_BUTTONS,
+            disable_web_page_preview=True,
         )
     elif message.data == "help":
         await message.message.edit_text(

@@ -18,7 +18,7 @@ import aiofiles
 import aiohttp
 import requests
 import wget
-import youtube_dl
+import youtube-dl
 from pyrogram import Client, filters
 from pyrogram.errors import FloodWait, MessageNotModified
 from pyrogram.types import Message

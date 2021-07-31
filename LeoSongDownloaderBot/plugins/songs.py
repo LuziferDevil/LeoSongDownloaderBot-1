@@ -4,6 +4,7 @@
 
 from __future__ import unicode_literals
 
+import html
 import asyncio
 import math
 import os

@@ -158,7 +158,7 @@ async def deezsong(_, message):
     is_downloading = True
     text = message.text.split(None, 1)[1]
     query = text.replace(" ", "%20")
-    m = await message.reply_text("Now I am Searching Your Song 🔎\n\n@leosongdownloaderbot 🇱🇰")
+    m = await message.reply_text("**Now I am Searching Your Song 🔎\n\nPlease Wait 😊**")
     try:
         songs = await arq.deezer(query, 1)
         if not songs.ok:

@@ -21,3 +21,4 @@ python-arq
 future
 py-tgcalls
 python-dotenv
+html

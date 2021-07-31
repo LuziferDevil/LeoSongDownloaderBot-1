@@ -60,7 +60,7 @@ def song(client, message):
 
     except Exception as e:
         m.edit(
-            "Nothing Found {} ☹️\n\nPlease check your spellings and try again😊".format(message.from_user.mention))
+            "Nothing Found {} ☹️\n\nPlease check your spellings and try again😊".format(message.from_user.mention)
         )
         print(str(e))
         return

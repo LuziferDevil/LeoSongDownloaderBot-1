@@ -1,0 +1,16 @@
+version: version
+services:
+  worker:
+    build: .
+    environment:
+      API_ID: $API_ID
+      API_HASH: $API_HASH
+      BOT_TOKEN: $BOT_TOKEN
+      UPDATES_CHANNEL: $UPDATES_CHANNEL
+      BOT_USERNAME: $BOT_USERNAME
+      SESSION_NAME: $SESSION_NAME
+      BOT_OWNER: $BOT_OWNER
+      BROADCAST_AS_COPY: $BROADCAST_AS_COPY
+      MONGODB_URI: $MONGODB_URI
+      LOG_CHANNEL: $LOG_CHANNEL
+      ARQ_API_KEY: $ARQ_API_KEY

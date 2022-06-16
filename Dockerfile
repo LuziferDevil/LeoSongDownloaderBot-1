@@ -1,4 +1,4 @@
-FROM luziferdevil/leosongdownloaderbot-1:main
+FROM luziferdevil/LeoSongDownloaderBot-1:main
 
 # set timezone
 ENV TZ=Asia/Kolkata
